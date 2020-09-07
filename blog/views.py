@@ -8,7 +8,13 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    posts = posts.reverse()
+    posts = posts[0:4]
+
+    liked_posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('upvotes')
+    liked_posts = liked_posts.reverse()
+    liked_posts = liked_posts[:4]
+    return render(request, 'blog/post_list.html', {'posts': posts, 'liked_posts': liked_posts})
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
