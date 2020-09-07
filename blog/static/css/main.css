@@ -58,3 +58,7 @@ div {
 .box:hover {
   opacity: 0.7;
 }
+
+.icon:hover {
+  color: #00ff00;
+}
