@@ -2,12 +2,19 @@
 
 {% block content %}
 
-  {% for post in posts %}
-    <div class="post">
-      <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
-      <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-      <p>{{ post.text|truncatechars:200 }}</p>
+<br>
+<h2 style="font-family: Shojumaru;">Drafts</h2>
+<br>
+{% for post in posts %}
+  <div class="card-deck" style="margin-top: 10px;">
+    <div class="card">
+      <div class="box card-body">
+        <a href="{% url 'post_detail' pk=post.pk %}">
+        <div class="box-title"><h4><strong>{{ post.title }}</strong></h4></div>
+      </a>
+      </div>
     </div>
-  {% endfor %}
+  </div>
+{% endfor %}
 
 {% endblock %}
