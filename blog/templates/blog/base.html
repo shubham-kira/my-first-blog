@@ -13,6 +13,7 @@
   <link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Shojumaru' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Bentham' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Carter One' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
@@ -27,8 +28,8 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="/">Home</a>
-            <a class="dropdown-item" href="#">Archive</a>
-            <a class="dropdown-item" href="#">About Me</a>
+            <a class="dropdown-item" href="{% url 'archive_list' %}">Archive</a>
+            <a class="dropdown-item" href="{% url 'about' %}">About Me</a>
             {% if user.is_authenticated %}
               <a href="{% url 'post_new' %}" class="dropdown-item">New Post</span></a>
               <a href="{% url 'post_draft_list' %}" class="dropdown-item">Drafts</span></a>

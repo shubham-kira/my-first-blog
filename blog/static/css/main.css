@@ -101,3 +101,30 @@ div {
   opacity: 0.7;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
+
+.blog-button a:hover {
+  text-decoration: underline #00ff00;
+}
+
+.list-item {
+  line-height: 200%;
+  font-size: 120%;
+}
+
+.list-item a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.list-item:hover {
+  text-decoration: underline;
+}
+
+.profile-image {
+  margin: 20px;
+  border-radius: 50%;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}

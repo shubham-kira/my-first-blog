@@ -27,7 +27,12 @@
     <div class="col-3 offset-9 post-content text-center">
       {% if post.published_date %}
         {{ post.published_date }}<br>
-        {{ user }}
+        <button type="button" class="btn btn-success">
+          <i class="fa fa-thumbs-up"></i> <span class="badge badge-light">{{ post.upvotes }}</span>
+        </button>
+        <button type="button" class="btn btn-danger">
+          <i class="fa fa-thumbs-down"></i> <span class="badge badge-light">{{ post.downvotes }}</span>
+        </button>
       {% else %}
         <div class="blog-button">
           <a href="{% url 'post_publish' pk=post.pk %}">Publish</a>
