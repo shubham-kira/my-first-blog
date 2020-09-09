@@ -27,21 +27,23 @@
     <div class="col-md-3 offset-md-9 post-content text-center">
       {% if post.published_date %}
         {{ post.published_date }}<br>
-        <button type="button" class="btn btn-success">
-          <i class="fa fa-thumbs-up"></i> <span class="badge badge-light">{{ post.upvotes }}</span>
-        </button>
-        <button type="button" class="btn btn-danger">
-          <i class="fa fa-thumbs-down"></i> <span class="badge badge-light">{{ post.downvotes }}</span>
-        </button>
+        <form method="POST">{% csrf_token %}
+          <button type="submit" name="upvote" value="liked" class="btn btn-success">
+            <i class="fa fa-thumbs-up"></i> <span class="badge badge-light">{{ post.upvotes }}</span>
+          </button>
+          <button type="submit" name="downvote" value="disliked" class="btn btn-danger">
+            <i class="fa fa-thumbs-down"></i> <span class="badge badge-light">{{ post.downvotes }}</span>
+          </button>
+        </form>
       {% else %}
         <div class="blog-button">
           <a href="{% url 'post_publish' pk=post.pk %}">Publish</a>
         </div>
       {% endif %}<br>
       {% if user.is_authenticated %}
-        <div class="blog-button">
+        <button class="blog-button">
           <a href="{% url 'post_edit' pk=post.pk %}">Edit</a>
-        </div>
+        </button>
         <div class="blog-button" style="margin-top: 10px;">
           <a href="{% url 'post_remove' pk=post.pk %}">Delete</a>
         </div>

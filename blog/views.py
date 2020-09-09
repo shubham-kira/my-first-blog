@@ -4,6 +4,7 @@ from django.utils import timezone
 from .forms import PostForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def post_list(request):
@@ -18,6 +19,15 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        if request.POST.get("upvote") == "liked":
+            post.upvotes += 1
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+        elif request.POST.get("downvote") == "disliked":
+            post.downvotes += 1
+            post.save()
+            return redirect('post_detail', pk=post.pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
 @login_required
@@ -28,8 +38,6 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             # post.published_date = timezone.now()
-            post.upvotes = 0
-            post.downvotes = 0
             post.save()
             return redirect('post_detail', pk=post.pk)
     else:
