@@ -3,13 +3,13 @@
   <h1><tt>Archive</tt></h1>
   {% for post in posts %}
     <div class="row list-item">
-      <div class="col-8">
+      <div class="col-md-8">
         <a href="{% url 'post_detail' pk=post.pk %}"><i class="fa fa-angle-right"></i><tt> {{ post.title }}</tt></a>
       </div>
-      <div class="col-4">
+      <div class="col-md-4" style="padding-left: 30px">
         <tt>{{ post.published_date }}</tt>
       </div>
-    </div>
+    </div><br>
   {% endfor %}
 
 {% endblock %}

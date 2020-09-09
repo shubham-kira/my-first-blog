@@ -16,7 +16,7 @@
     <p> {{ post.text|linebreaksbr }}
   </div> -->
   <div class="row">
-    <div class="col-6 offset-3 text-center">
+    <div class="col-md-6 offset-md-3 text-center">
       <div class="post-title">
         <h1>{{ post.title }}</h1>
       </div>
@@ -24,7 +24,7 @@
         {{ post.text|linebreaksbr }}
       </div>
     </div>
-    <div class="col-3 offset-9 post-content text-center">
+    <div class="col-md-3 offset-md-9 post-content text-center">
       {% if post.published_date %}
         {{ post.published_date }}<br>
         <button type="button" class="btn btn-success">
